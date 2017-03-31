@@ -98,7 +98,7 @@ function setScrollAnimation(questionSet) {
 
   window.scrollTo(0, 0);
 
-  setTimeout(() => { blockScroll = false; }, 100);
+  setTimeout(() => { blockScroll = false; }, 500);
 }
 
 function createQuestions(questionSet) {
