@@ -83,6 +83,8 @@ function setScrollAnimation(questionSet) {
   let blockScroll = true;
 
   $window.scroll(e => {
+    console.log(blockScroll);
+
     if (blockScroll) {
       blockScroll = false;
     } else {
