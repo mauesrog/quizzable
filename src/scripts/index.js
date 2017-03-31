@@ -84,6 +84,7 @@ function setScrollAnimation(questionSet) {
     if ($window.scrollTop() > 0 && !backgroundFaded) {
       backgroundFaded = true;
       $('header').addClass('shrunk');
+      $('html').addClass('active');
     }
 
     if ($('#result').is('.show') && $window.scrollTop() < 850) {
