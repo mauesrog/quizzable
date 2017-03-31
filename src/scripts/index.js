@@ -80,19 +80,25 @@ function hideResult() {
 function setScrollAnimation(questionSet) {
   const $window = $(window);
 
-  window.scrollTo(0, 0);
+  let blockScroll = true;
 
   $window.scroll(e => {
-    if ($window.scrollTop() > 20 && !backgroundFaded) {
-      backgroundFaded = true;
-      $('header').addClass('shrunk');
-    }
+    if (!blockScroll) {
+      if ($window.scrollTop() > 20 && !backgroundFaded) {
+        backgroundFaded = true;
+        $('header').addClass('shrunk');
+      }
 
-    if ($('#result').is('.show') && $window.scrollTop() < 850) {
-      console.log('here');
-      hideResult();
+      if ($('#result').is('.show') && $window.scrollTop() < 850) {
+        console.log('here');
+        hideResult();
+      }
     }
   });
+
+  window.scrollTo(0, 0);
+
+  setTimeout(() => { blockScroll = false; }, 100);
 }
 
 function createQuestions(questionSet) {
