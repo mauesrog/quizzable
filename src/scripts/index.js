@@ -80,26 +80,18 @@ function hideResult() {
 function setScrollAnimation(questionSet) {
   const $window = $(window);
 
-  let blockScroll = true;
-
   $window.scroll(e => {
-    console.log(blockScroll);
+    if ($window.scrollTop() > 0 && !backgroundFaded) {
+      backgroundFaded = true;
+      $('header').addClass('shrunk');
+    }
 
-    if (blockScroll) {
-      blockScroll = false;
-    } else {
-      if ($window.scrollTop() > 20 && !backgroundFaded) {
-        backgroundFaded = true;
-        $('header').addClass('shrunk');
-      }
-
-      if ($('#result').is('.show') && $window.scrollTop() < 850) {
-        hideResult();
-      }
+    if ($('#result').is('.show') && $window.scrollTop() < 850) {
+      hideResult();
     }
   });
 
-  window.scrollTo(0, 0);
+  location.href = "#header";
 }
 
 function createQuestions(questionSet) {
